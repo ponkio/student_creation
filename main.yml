@@ -1,0 +1,29 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  vars_files:
+    - prod_vars.yml
+  tasks:
+
+  - name: Create groups
+    group:
+      name: "{{ item }}"
+      state: present
+    loop: "{{ classes | list }}"
+
+#https://stackoverflow.com/questions/46720411/is-it-safe-to-edit-etc-sudoers-with-the-ansible-lineinfile-module
+  - name: Verify instructors is an admin
+    lineinfile:
+      path: /etc/sudoers
+      state: present
+      regexp: '^%instructors ALL='
+      line: '%instructors ALL=(ALL:ALL) ALL'
+      validate: '/usr/sbin/visudo -cf %s'
+
+  - name: Create users
+    include_tasks: tasks/create-users-wrapper.yml
+    loop: "{{ classes | list }}"
+    loop_control:
+      loop_var: class_name
+    when: classes[class_name] is iterable

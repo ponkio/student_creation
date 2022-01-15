@@ -1,0 +1,5 @@
+# This has to be wrapped cause ansible doesnt like looping blocks.
+# could be better with a different vars.yml config style
+- name: Create users
+  include_tasks: create-users-for-group.yml
+  loop: "{{ classes[class_name] }}"

@@ -1,0 +1,7 @@
+classes:
+  instructors:
+    - name: "Administrator"
+      username: admin
+  class_1:
+    - name: "another user"
+      username: user1

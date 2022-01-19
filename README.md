@@ -16,7 +16,7 @@ pipenv
 
 After the packages are installed verify you have ssh access as a user with passwordless sudo permissions to the server you are targeting. 
 
-_It is HIGHLY recommended you setup key auth to the target server with `ssh-copy-id` prior to running this_
+_It is HIGHLY recommended you setup key authentication to the target server with `ssh-copy-id` prior to running this_
 
 
 ## Setup and installation
@@ -57,10 +57,10 @@ In each class or group is a list of users. Each user will be created and assigne
 
 ## Running the script
 
-Run the `ansible-playbook` command and modify the `-i` parameter to your target server. And `-u` with the user that has key authentication setup with the target server(s). You can find more details on ways to connect to target servers [here](https://docs.ansible.com/ansible/latest/user_guide/connection_details.html). 
+Run the `ansible-playbook` command and modify the `-i` parameter to your target server (_the `,` is very important_). And `-u` with the user that has key authentication setup with the target server(s). You can find more details on ways to connect to target servers [here](https://docs.ansible.com/ansible/latest/user_guide/connection_details.html). 
 
 ```
-ansible-playbook -i 1.2.3.4, main.yml -u {user}
+ansible-playbook -i 1.2.3.4, main.yml -u ponkio
 ```
 
 Afterwards you should now have ssh keys in `keys/` in the same structure as your configuration file. 

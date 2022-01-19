@@ -3,7 +3,7 @@
   gather_facts: false
   become: true
   vars_files:
-    - prod_vars.yml
+    - vars.yml
   tasks:
 
   - name: Create groups
@@ -20,6 +20,7 @@
       regexp: '^%instructors ALL='
       line: '%instructors ALL=(ALL:ALL) ALL'
       validate: '/usr/sbin/visudo -cf %s'
+    when: classes['instructors'] is defined
 
   - name: Create users
     include_tasks: tasks/create-users-wrapper.yml
@@ -27,3 +28,15 @@
     loop_control:
       loop_var: class_name
     when: classes[class_name] is iterable
+
+  - name: Disable ssh password auth
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      state: present
+      regexp: '^#PasswordAuthentication'
+      line: 'PasswordAuthentication no'
+
+  - name: Restart ssh
+    service: 
+      name: ssh
+      state: restarted

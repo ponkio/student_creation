@@ -2,7 +2,7 @@
 - name: Create users
   user:
     name: "{{ item.username }}"
-    groups: "{{ class_name }}, rose_students"
+    groups: "{{ class_name }}"
     password: "{{ item.username | password_hash('sha512') }}"
     comment: "{{ item.name }}"
     shell: /bin/bash

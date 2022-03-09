@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Student creation
 
 ## Descritpion
@@ -66,3 +67,16 @@ ansible-playbook -i 1.2.3.4, main.yml -u ponkio
 Afterwards you should now have ssh keys in `keys/` in the same structure as your configuration file. 
 
 _Note: You are able to use an inventory file to target multiple servers. See [ansible docs](https://docs.ansible.com/ansible/latest/network/getting_started/first_inventory.html) for details_
+=======
+# Rose Students
+
+## Pre-requisites
+In order to run this playbook you will need the following installed: 
+
+```
+python >= 3.6 
+pip
+ansible
+pipenv
+```
+>>>>>>> Stashed changes

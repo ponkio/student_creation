@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Student creation
 
 ## Descritpion
@@ -79,4 +78,4 @@ pip
 ansible
 pipenv
 ```
->>>>>>> Stashed changes
+TEST DUMMY API key: 7fd1a60b01f91b314f59955a4e4d4e80d8edf11d
